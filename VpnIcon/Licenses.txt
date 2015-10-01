@@ -1,0 +1,3 @@
+﻿DotRas - Licensed from CodePlex
+NotifyIconWpf - Licensed from
+NetworkIcon - Base icon was made by FreePik (http://www.freepik.com), downloaded from http://www.flaticon.com and is licensed http://creativecommons.org/licenses/by/3.0/

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VpnIcon", "VpnIcon\VpnIcon.csproj", "{A2A45235-08D8-4080-9255-44EF465C99AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyIconWpf", "Third Party\NotifyIconWpf\NotifyIconWpf.csproj", "{7AC63864-7638-41C4-969C-D3197EF2BED9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotRas", "Third Party\DotRas\DotRas.csproj", "{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Staging|Any CPU = Staging|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Staging|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A45235-08D8-4080-9255-44EF465C99AC}.Staging|Any CPU.Build.0 = Release|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Staging|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Staging|Any CPU.Build.0 = Release|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Staging|Any CPU.Build.0 = Staging|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7AC63864-7638-41C4-969C-D3197EF2BED9} = {DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}
+		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13} = {DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}
+	EndGlobalSection
+EndGlobal

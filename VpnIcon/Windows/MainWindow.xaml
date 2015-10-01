@@ -1,0 +1,76 @@
+﻿<Window x:Class="VpnIcon.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/datagrid"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:w="clr-namespace:VpnIcon.Windows"
+        xmlns:h="clr-namespace:VpnIcon.Handler"
+        xmlns:vm="clr-namespace:VpnIcon.ViewModels"
+        xmlns:s="clr-namespace:VpnIcon.Selectors"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        mc:Ignorable="d" x:Name="mainWindow"
+        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type vm:MainViewModel}}"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:MainViewModel x:Name="viewModel" />
+    </Window.DataContext>
+    <Window.Resources>
+        <!-- <CollectionViewSource Source="{Binding ElementName=mainWindow, Path=DataContext.ContextMenu.ChildMenuItems}" x:Key="ChildMenu"/> -->
+        <CollectionViewSource Source="{Binding ElementName=mainWindow, Path=DataContext.GroupedMenuItems}" x:Key="GroupedChildMenu" />
+        <CollectionViewSource Source="{Binding ElementName=mainWindow, Path=DataContext.UngroupedMenuItems}" x:Key="UngroupedChildMenu" />
+
+        <CompositeCollection x:Key="MenuCollection">
+            <!--<MenuItem Header="Show Window" Command="{Binding ShowWindowCommand}" />
+            <MenuItem Header="Hide Window" Command="{Binding HideWindowCommand}" />-->
+            <CollectionContainer Collection="{Binding Source={StaticResource UngroupedChildMenu}}" />
+            <Separator />
+            <CollectionContainer Collection="{Binding Source={StaticResource GroupedChildMenu}}" />
+            <Separator />
+            <MenuItem x:Name="MenuItemExit" Header="Exit" Style="{x:Null}"  Tag="ExitApplicationCommand" 
+                      Command="{Binding DataContext.ExitApplicationCommand, Source={x:Reference mainWindow}}" />
+        </CompositeCollection>
+
+    </Window.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding Entries}" />
+
+        <!-- The taskbar context menu - the first row is a dummy to show off simple data binding -->
+        <!--
+        The "shared" directive is needed if we reopen the sample window a few times - WPF will otherwise
+        reuse the same context menu (which is a resource) again (which will have its DataContext set to the old TaskbarIcon)
+  -->
+
+        <!-- the application's NotifyIcon - started from App.xaml.cs. Declares its own view model. -->
+        <tb:TaskbarIcon x:Name="NotifyIcon" Tag="{Binding ElementName=viewModel}"
+                        h:BalloonHelper.CustomBalloon="{Binding Balloon}"
+                        h:BalloonHelper.StandardBalloon="{Binding BalloonTip}"
+                    IconSource="{Binding IconSource}"
+                    MenuActivation="LeftOrRightClick"
+                    ToolTipText="Double-click for window, right-click for menu">
+            <!-- self-assign a data context (could also be done programmatically) -->
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu x:Name="TaskbarContextMenu" ItemsSource="{Binding Source={StaticResource MenuCollection}}" DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                    <ContextMenu.Resources>
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Tag}" Value="{x:Null}">
+                                    <Setter Property="Header" Value="{Binding Header}"/>
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Setter Property="IsCheckable" Value="{Binding IsCheckable}" />
+                                    <Setter Property="IsChecked" Value="{Binding IsConnected}" />
+                                    <Setter Property="CommandParameter" Value="{Binding}" />
+                                    <Setter Property="Command" Value="{Binding DataContext.ConnectionCommand, Source={x:Reference mainWindow}}"/>
+                               </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                        <HierarchicalDataTemplate DataType="{x:Type vm:MenuItemViewModel}" ItemsSource="{Binding ChildMenuItems}" />
+                    </ContextMenu.Resources>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+
+    </Grid>
+</Window>
