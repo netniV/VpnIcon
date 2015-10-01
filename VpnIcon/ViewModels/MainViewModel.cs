@@ -39,6 +39,8 @@ namespace VpnIcon.ViewModels
         protected Dispatcher Dispatcher { get; }
         protected RasConnectionWatcher Watcher { get; }
 
+        protected List<ConnectionViewModel> Connections { get; set; }
+
         #endregion
 
         #region · Public Properties ·
@@ -182,6 +184,7 @@ namespace VpnIcon.ViewModels
         {
             ConnectionsGroupsViewModel groupedItems = new ConnectionsGroupsViewModel();
             ConnectionsGroupViewModel ungroupedItems = await CreateConnections(Entries).ConfigureAwait(false);
+            Connections = ungroupedItems.Clone();
             var groups = ungroupedItems.GroupBy(x => x.GroupName).OrderBy(x => x.Key);
 
             List<Task> groupTasks = new List<Task>();
@@ -256,12 +259,13 @@ namespace VpnIcon.ViewModels
 
         private void Connection_Error(object sender, System.IO.ErrorEventArgs e)
         {
-            throw new NotImplementedException();
+            ConnectionViewModel cvm = sender as ConnectionViewModel;
+            ShowBalloon($"{cvm.FullName}", $"{e.GetException().GetType().Name} + {e.GetException().Message}", icon: BalloonIcon.Error);
         }
 
         private void Connection_StateChanged(object sender, StateChangedEventArgs e)
         {
-            ShowBalloon((sender as ConnectionViewModel).GroupName, e.State.ToString(), useCustom: true);
+            //ShowBalloon((sender as ConnectionViewModel).GroupName, e.State.ToString(), useCustom: true);
         }
 
         private void Connection_DialCompleted(object sender, DialCompletedEventArgs e)
@@ -288,11 +292,16 @@ namespace VpnIcon.ViewModels
         private void Watcher_Disconnected(object sender, RasConnectionEventArgs e)
         {
             ShowBalloon("Connection closed", $"{e.Connection?.EntryName} has been closed and is no longer active.", icon: BalloonIcon.Warning);
+            ConnectionViewModel cvm = Connections.FirstOrDefault(x => x.FullName == e.Connection?.EntryName);
+            if (cvm != null)
+            {
+                cvm.Dialer_DialCompleted(sender, new DialCompletedEventArgs(e.Connection.Handle, null, false, false, false, null));
+            }
         }
 
         private void Watcher_Connected(object sender, RasConnectionEventArgs e)
         {
-            ShowBalloon("Connection closed", $"{e.Connection?.EntryName} has been dialed and is now active.");
+            ShowBalloon("Connection established", $"{e.Connection?.EntryName} has been dialed and is now active.");
             UpdateTrayIcon();
         }
 

@@ -197,7 +197,7 @@ namespace VpnIcon.ViewModels
             StateChanged?.Invoke(this, e);
         }
 
-        private void Dialer_DialCompleted(object sender, DialCompletedEventArgs e)
+        internal void Dialer_DialCompleted(object sender, DialCompletedEventArgs e)
         {
             DialCompleted?.Invoke(this, e);
             lock (DialerLock)
