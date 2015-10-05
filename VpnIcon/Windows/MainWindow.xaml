@@ -9,8 +9,7 @@
         xmlns:h="clr-namespace:VpnIcon.Handler"
         xmlns:vm="clr-namespace:VpnIcon.ViewModels"
         xmlns:s="clr-namespace:VpnIcon.Selectors"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:acb="clr-namespace:AttachedCommandBehavior;assembly=AttachedCommandBehavior"
         mc:Ignorable="d" x:Name="mainWindow"
         d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type vm:MainViewModel}}"
         Title="MainWindow" Height="350" Width="525">
@@ -26,10 +25,17 @@
             <!--<MenuItem Header="Show Window" Command="{Binding ShowWindowCommand}" />
             <MenuItem Header="Hide Window" Command="{Binding HideWindowCommand}" />-->
             <CollectionContainer Collection="{Binding Source={StaticResource UngroupedChildMenu}}" />
-            <Separator />
+            <Separator Visibility="{Binding DataContext.GroupingSeparatorVisibility, Source={x:Reference mainWindow}}"/>
             <CollectionContainer Collection="{Binding Source={StaticResource GroupedChildMenu}}" />
             <Separator />
+            <MenuItem x:Name="MenuItemVersion" Header="{Binding DataContext.VersionInfo, Source={x:Reference mainWindow}}" IsEnabled="False" />
+            <Separator Visibility="{Binding DataContext.ExtraMenuItemsVisibility, Source={x:Reference mainWindow}}"/>
+            <MenuItem x:Name="MenuItemStartup" Header="Start with Windows" Style="{x:Null}" Tag="StartupCommand" 
+                      Visibility="{Binding DataContext.ExtraMenuItemsVisibility, Source={x:Reference mainWindow}}"
+                      IsChecked="{Binding DataContext.StartupEnabled, Source={x:Reference mainWindow}}"
+                      Command="{Binding DataContext.StartupCommand, Source={x:Reference mainWindow}}" />
             <MenuItem x:Name="MenuItemExit" Header="Exit" Style="{x:Null}"  Tag="ExitApplicationCommand" 
+                      Visibility="{Binding DataContext.ExtraMenuItemsVisibility, Source={x:Reference mainWindow}}"
                       Command="{Binding DataContext.ExitApplicationCommand, Source={x:Reference mainWindow}}" />
         </CompositeCollection>
 
@@ -47,9 +53,12 @@
         <tb:TaskbarIcon x:Name="NotifyIcon" Tag="{Binding ElementName=viewModel}"
                         h:BalloonHelper.CustomBalloon="{Binding Balloon}"
                         h:BalloonHelper.StandardBalloon="{Binding BalloonTip}"
-                    IconSource="{Binding IconSource}"
-                    MenuActivation="LeftOrRightClick"
-                    ToolTipText="Double-click for window, right-click for menu">
+                        IconSource="{Binding IconSource}" ToolTipText="{Binding ConnectionStatus}"
+                        MenuActivation="LeftOrRightClick" NoLeftClickDelay="true">
+            <acb:CommandBehaviorCollection.Behaviors>
+                <acb:BehaviorBinding Event="TrayLeftMouseDown" Command="{Binding SetExtraMenuItemsVisiblityCommand}" CommandParameter="false" />
+                <acb:BehaviorBinding Event="TrayRightMouseDown" Command="{Binding SetExtraMenuItemsVisiblityCommand}" CommandParameter="true" />
+            </acb:CommandBehaviorCollection.Behaviors>
             <!-- self-assign a data context (could also be done programmatically) -->
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu x:Name="TaskbarContextMenu" ItemsSource="{Binding Source={StaticResource MenuCollection}}" DataContext="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
@@ -63,7 +72,7 @@
                                     <Setter Property="IsChecked" Value="{Binding IsConnected}" />
                                     <Setter Property="CommandParameter" Value="{Binding}" />
                                     <Setter Property="Command" Value="{Binding DataContext.ConnectionCommand, Source={x:Reference mainWindow}}"/>
-                               </DataTrigger>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                         <HierarchicalDataTemplate DataType="{x:Type vm:MenuItemViewModel}" ItemsSource="{Binding ChildMenuItems}" />

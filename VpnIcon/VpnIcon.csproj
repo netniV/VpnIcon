@@ -50,15 +50,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>..\Support\TrayIcon Disconnected.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Handler\BalloonHelper.cs" />
     <Compile Include="Handler\RoutedEventHandler.cs" />
+    <Compile Include="Handler\StartUpHandler.cs" />
     <Compile Include="Selectors\MenuStyleSelector.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ConnectionsGroupsViewModel.cs" />
@@ -146,6 +146,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Third Party\AttachedCommandBehavior\AttachedCommandBehavior.csproj">
+      <Project>{ba852758-6682-4878-906a-917a1e75de16}</Project>
+      <Name>AttachedCommandBehavior</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Third Party\DotRas\DotRas.csproj">
       <Project>{09eb2d48-2a3b-4aa7-bdc5-908e103b1e13}</Project>
       <Name>DotRas</Name>
@@ -157,27 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Licenses.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Disconnected Red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Disconnected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Connected.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Connected.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Disconnected Red.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Disconnected.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\Support\TrayIcon Connected.png">
@@ -211,6 +194,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VpnIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

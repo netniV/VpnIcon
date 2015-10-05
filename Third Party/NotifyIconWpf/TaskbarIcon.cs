@@ -22,6 +22,7 @@
 // THIS COPYRIGHT NOTICE MAY NOT BE REMOVED FROM THIS FILE
 
 
+using Hardcodet.Wpf.TaskbarNotification.Interop;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -31,7 +32,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
 using System.Windows.Threading;
-using Hardcodet.Wpf.TaskbarNotification.Interop;
 using Point = Hardcodet.Wpf.TaskbarNotification.Interop.Point;
 
 
@@ -66,6 +66,14 @@ namespace Hardcodet.Wpf.TaskbarNotification
         /// and double clicks.
         /// </summary>
         private readonly Timer singleClickTimer;
+
+        /// <summary>
+        /// The time we should wait for a double click.
+        /// </summary>
+        private int doubleClickWaitTime
+        {
+            get { return NoLeftClickDelay ? 0 : WinApi.GetDoubleClickTime(); }
+        }
 
         /// <summary>
         /// A timer that is used to close open balloon tooltips.
@@ -409,7 +417,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
                         LeftClickCommand.ExecuteIfEnabled(LeftClickCommandParameter, LeftClickCommandTarget ?? this);
                         ShowTrayPopup(cursorPosition);
                     };
-                    singleClickTimer.Change(WinApi.GetDoubleClickTime(), Timeout.Infinite);
+                    singleClickTimer.Change(doubleClickWaitTime, Timeout.Infinite);
                     isLeftClickCommandInvoked = true;
                 }
                 else
@@ -431,7 +439,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
                         LeftClickCommand.ExecuteIfEnabled(LeftClickCommandParameter, LeftClickCommandTarget ?? this);
                         ShowContextMenu(cursorPosition);
                     };
-                    singleClickTimer.Change(WinApi.GetDoubleClickTime(), Timeout.Infinite);
+                    singleClickTimer.Change(doubleClickWaitTime, Timeout.Infinite);
                     isLeftClickCommandInvoked = true;
                 }
                 else
@@ -450,7 +458,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
                     {
                         LeftClickCommand.ExecuteIfEnabled(LeftClickCommandParameter, LeftClickCommandTarget ?? this);
                     };
-                singleClickTimer.Change(WinApi.GetDoubleClickTime(), Timeout.Infinite);
+                singleClickTimer.Change(doubleClickWaitTime, Timeout.Infinite);
             }
         }
 
@@ -670,7 +678,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
                 if (TrayPopupResolved.Child != null)
                 {
                     //try to get a handle on the popup itself (via its child)
-                    HwndSource source = (HwndSource) PresentationSource.FromVisual(TrayPopupResolved.Child);
+                    HwndSource source = (HwndSource)PresentationSource.FromVisual(TrayPopupResolved.Child);
                     if (source != null) handle = source.Handle;
                 }
 
@@ -720,7 +728,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
                 IntPtr handle = IntPtr.Zero;
 
                 //try to get a handle on the context itself
-                HwndSource source = (HwndSource) PresentationSource.FromVisual(ContextMenu);
+                HwndSource source = (HwndSource)PresentationSource.FromVisual(ContextMenu);
                 if (source != null)
                 {
                     handle = source.Handle;
@@ -865,18 +873,18 @@ namespace Hardcodet.Wpf.TaskbarNotification
         /// </summary>
         private void SetVersion()
         {
-            iconData.VersionOrTimeout = (uint) NotifyIconVersion.Vista;
+            iconData.VersionOrTimeout = (uint)NotifyIconVersion.Vista;
             bool status = WinApi.Shell_NotifyIcon(NotifyCommand.SetVersion, ref iconData);
 
             if (!status)
             {
-                iconData.VersionOrTimeout = (uint) NotifyIconVersion.Win2000;
+                iconData.VersionOrTimeout = (uint)NotifyIconVersion.Win2000;
                 status = Util.WriteIconData(ref iconData, NotifyCommand.SetVersion);
             }
 
             if (!status)
             {
-                iconData.VersionOrTimeout = (uint) NotifyIconVersion.Win95;
+                iconData.VersionOrTimeout = (uint)NotifyIconVersion.Win95;
                 status = Util.WriteIconData(ref iconData, NotifyCommand.SetVersion);
             }
 
@@ -928,7 +936,7 @@ namespace Hardcodet.Wpf.TaskbarNotification
 
                     //set to most recent version
                     SetVersion();
-                    messageSink.Version = (NotifyIconVersion) iconData.VersionOrTimeout;
+                    messageSink.Version = (NotifyIconVersion)iconData.VersionOrTimeout;
 
                     IsTaskbarIconCreated = true;
                 }
@@ -973,14 +981,14 @@ namespace Hardcodet.Wpf.TaskbarNotification
                 else
                 {
                     var transform = presentationSource.CompositionTarget.TransformToDevice;
-                    scalingFactor = 1/transform.M11;
+                    scalingFactor = 1 / transform.M11;
                 }
             }
 
             //on standard DPI settings, just return the point
             if (scalingFactor == 1.0) return point;
 
-            return new Point() {X = (int) (point.X*scalingFactor), Y = (int) (point.Y*scalingFactor)};
+            return new Point() { X = (int)(point.X * scalingFactor), Y = (int)(point.Y * scalingFactor) };
         }
 
         #region Dispose / Exit

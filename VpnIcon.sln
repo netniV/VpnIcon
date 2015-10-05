@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyIconWpf", "Third Part
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotRas", "Third Party\DotRas\DotRas.csproj", "{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachedCommandBehavior", "Third Party\AttachedCommandBehavior\AttachedCommandBehavior.csproj", "{BA852758-6682-4878-906A-917A1E75DE16}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -40,6 +42,12 @@ Global
 		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
 		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13}.Staging|Any CPU.Build.0 = Staging|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Staging|Any CPU.ActiveCfg = Release|Any CPU
+		{BA852758-6682-4878-906A-917A1E75DE16}.Staging|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +55,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7AC63864-7638-41C4-969C-D3197EF2BED9} = {DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}
 		{09EB2D48-2A3B-4AA7-BDC5-908E103B1E13} = {DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}
+		{BA852758-6682-4878-906A-917A1E75DE16} = {DB2833BE-02F8-4906-88C9-BC15E5B0F0EF}
 	EndGlobalSection
 EndGlobal

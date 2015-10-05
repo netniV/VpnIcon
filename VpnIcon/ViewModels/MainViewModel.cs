@@ -3,8 +3,12 @@ using Hardcodet.Wpf.TaskbarNotification;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -44,6 +48,84 @@ namespace VpnIcon.ViewModels
         #endregion
 
         #region · Public Properties ·
+
+        public string VersionInfo
+        {
+            get
+            {
+                Assembly assembly = Assembly.GetEntryAssembly();
+                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                return $"{fvi.ProductName} v{fvi.FileMajorPart}.{fvi.FileMinorPart} by {fvi.CompanyName}";
+            }
+        }
+
+        private Visibility mGroupingSeparatorVisibility = Visibility.Visible;
+        public Visibility GroupingSeparatorVisibility
+        {
+            get { return mGroupingSeparatorVisibility; }
+            private set
+            {
+                if (value != mGroupingSeparatorVisibility)
+                {
+                    OnPropertyChanging("GroupingSeparatorVisibility");
+                    mGroupingSeparatorVisibility = value;
+                    OnPropertyChanged("GroupingSeparatorVisibility");
+                }
+            }
+        }
+
+
+        private Visibility mExtraMenuItemsVisibility = Visibility.Visible;
+        public Visibility ExtraMenuItemsVisibility
+        {
+            get { return mExtraMenuItemsVisibility; }
+            set
+            {
+                if (value != mExtraMenuItemsVisibility)
+                {
+                    OnPropertyChanging("ExtraMenuItemsVisibility");
+                    mExtraMenuItemsVisibility = value;
+                    OnPropertyChanged("ExtraMenuItemsVisibility");
+                }
+            }
+        }
+
+
+        public bool StartupEnabled
+        {
+            get
+            {
+                return StartUpHandler.IsApplicationStartupForCurrentUser();
+            }
+            set
+            {
+                OnPropertyChanging(nameof(StartupEnabled));
+                OnPropertyChanged(nameof(StartupEnabled));
+            }
+        }
+
+
+        public string ConnectionStatus
+        {
+            get
+            {
+                StringBuilder sbStatus = new StringBuilder();
+                foreach (var connection in RasConnection.GetActiveConnections())
+                {
+                    if (sbStatus.Length == 0)
+                        sbStatus.AppendFormat("Active connections: {0}", Environment.NewLine);
+
+                    var connectionTime = connection.GetConnectionStatistics().ConnectionDuration;
+                    if (connectionTime.TotalMinutes < 60)
+                        sbStatus.AppendFormat("{0} ({1:mm:ss){2}", connection.EntryName, connectionTime, Environment.NewLine);
+                }
+
+                if (sbStatus.Length == 0)
+                    sbStatus.AppendFormat("No connections are currently active");
+
+                return sbStatus.ToString();
+            }
+        }
 
 
         private BalloonTipEventArgs mBalloonTip;
@@ -208,6 +290,13 @@ namespace VpnIcon.ViewModels
             await Task.Run(() =>
             {
                 GroupedMenuItems = groupedItems;
+            });
+
+            await Task.Run(() =>
+            {
+                GroupingSeparatorVisibility =
+                    (ungroupedItems != null && ungroupedItems.Count > 0 &&
+                     groupedItems != null && groupedItems.Count > 0) ? Visibility.Visible : Visibility.Collapsed;
             });
         }
 
@@ -376,6 +465,89 @@ namespace VpnIcon.ViewModels
                 App.Current?.Shutdown();
             }
         }
+        #endregion
+
+        #region " SetExtraMenuItemsVisiblity Command "
+        private RelayCommand mSetExtraMenuItemsVisiblityCommand;
+
+        public ICommand SetExtraMenuItemsVisiblityCommand
+        {
+            get
+            {
+                if (mSetExtraMenuItemsVisiblityCommand == null)
+                    mSetExtraMenuItemsVisiblityCommand = new RelayCommand(doSetExtraMenuItemsVisiblityCommand, canSetExtraMenuItemsVisiblityCommand);
+
+                return mSetExtraMenuItemsVisiblityCommand;
+            }
+        }
+
+        public bool canSetExtraMenuItemsVisiblityCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return obj != null;
+        }
+
+        public void doSetExtraMenuItemsVisiblityCommand(object obj)
+        {
+            if (canSetExtraMenuItemsVisiblityCommand(obj))
+            {
+                Visibility newState = Visibility.Visible;
+                bool newBooleanValue = false;
+                if (bool.TryParse(obj.ToString(), out newBooleanValue))
+                    newState = (newBooleanValue) ? Visibility.Visible : Visibility.Collapsed;
+                else
+                {
+                    Visibility newVisibilityValue = Visibility.Collapsed;
+                    if (Enum.TryParse<Visibility>(obj.ToString(), out newVisibilityValue))
+                        newState = newVisibilityValue;
+                }
+                ExtraMenuItemsVisibility = newState;
+            }
+        }
+
+        public Visibility showSetExtraMenuItemsVisiblityCommand
+        {
+            get
+            {
+                return canSetExtraMenuItemsVisiblityCommand(null) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+        #endregion
+
+        #region " Startup Command "
+        private RelayCommand mStartupCommand;
+
+        public ICommand StartupCommand
+        {
+            get
+            {
+                if (mStartupCommand == null)
+                    mStartupCommand = new RelayCommand(doStartupCommand, canStartupCommand);
+
+                return mStartupCommand;
+            }
+        }
+
+        public bool canStartupCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return true;
+        }
+
+        public void doStartupCommand(object obj)
+        {
+            if (canStartupCommand(obj))
+            {
+                OnPropertyChanging(nameof(StartupEnabled));
+                if (StartupEnabled)
+                    StartUpHandler.RemoveApplicationFromCurrentUserStartup();
+                else
+                    StartUpHandler.AddApplicationToCurrentUserStartup();
+
+                OnPropertyChanged(nameof(StartupEnabled));
+            }
+        }
+
         #endregion
 
         #endregion
