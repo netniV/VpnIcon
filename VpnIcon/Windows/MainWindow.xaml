@@ -28,7 +28,8 @@
             <Separator Visibility="{Binding DataContext.GroupingSeparatorVisibility, Source={x:Reference mainWindow}}"/>
             <CollectionContainer Collection="{Binding Source={StaticResource GroupedChildMenu}}" />
             <Separator />
-            <MenuItem x:Name="MenuItemVersion" Header="{Binding DataContext.VersionInfo, Source={x:Reference mainWindow}}" IsEnabled="False" />
+            <MenuItem x:Name="MenuItemVersion" Header="{Binding DataContext.VersionInfo, Source={x:Reference mainWindow}}" 
+                      Command="{Binding DataContext.AboutMenuCommand, Source={x:Reference mainWindow}}"/>
             <Separator Visibility="{Binding DataContext.ExtraMenuItemsVisibility, Source={x:Reference mainWindow}}"/>
             <MenuItem x:Name="MenuItemStartup" Header="Start with Windows" Style="{x:Null}" Tag="StartupCommand" 
                       Visibility="{Binding DataContext.ExtraMenuItemsVisibility, Source={x:Reference mainWindow}}"

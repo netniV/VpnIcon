@@ -1,0 +1,12 @@
+﻿<Window x:Class="VpnIcon.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VpnIcon.Windows"
+        mc:Ignorable="d"
+        Title="{Binding VersionInfo}" Height="300" Width="600" WindowStyle="ToolWindow" ResizeMode="CanResize">
+    <Grid>
+        <local:AboutBox />
+    </Grid>
+</Window>

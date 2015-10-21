@@ -1,0 +1,26 @@
+﻿<Window x:Class="VpnIcon.Windows.ExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:w="clr-namespace:VpnIcon.Windows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="ToolWindow" BorderBrush="Red" BorderThickness="2"
+        Title="Exception ..." Height="300" Width="300" x:Name="exceptionWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="38" FontFamily="Consolas" Foreground="White" Content="{Binding ExceptionType.Name, ElementName=exceptionWindow}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Padding="15" Background="Red" Margin="0,0,0,5">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <w:AboutBox Grid.Row="1" VersionHistory="">
+            <w:AboutBox.AdditionalContent>
+                <xctk:PropertyGrid Grid.Row="1" SelectedObject="{Binding ExceptionObject, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type w:ExceptionWindow}}}" />                
+            </w:AboutBox.AdditionalContent>
+        </w:AboutBox>
+    </Grid>
+</Window>

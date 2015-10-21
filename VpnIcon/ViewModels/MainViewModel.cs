@@ -49,6 +49,22 @@ namespace VpnIcon.ViewModels
 
         #region · Public Properties ·
 
+
+        private bool mAboutMenuItemEnabled;
+        public bool AboutMenuItemEnabled
+        {
+            get { return mAboutMenuItemEnabled; }
+            set
+            {
+                if (value != mAboutMenuItemEnabled)
+                {
+                    OnPropertyChanging("AboutMenuItemEnabled");
+                    mAboutMenuItemEnabled = value;
+                    OnPropertyChanged("AboutMenuItemEnabled");
+                }
+            }
+        }
+
         public string VersionInfo
         {
             get
@@ -115,9 +131,17 @@ namespace VpnIcon.ViewModels
                     if (sbStatus.Length == 0)
                         sbStatus.AppendFormat("Active connections: {0}", Environment.NewLine);
 
+                    var connectionStat = connection.GetConnectionStatistics();
+                    var connectionLink = connection.GetLinkStatistics();
                     var connectionTime = connection.GetConnectionStatistics().ConnectionDuration;
-                    if (connectionTime.TotalMinutes < 60)
-                        sbStatus.AppendFormat("{0} ({1:mm:ss){2}", connection.EntryName, connectionTime, Environment.NewLine);
+
+                    sbStatus.Append($"{connection.EntryName} (");
+                    if (connectionTime.TotalHours >= 1)
+                        sbStatus.Append("{connectionTime.Hours}h ");
+                    sbStatus.Append($"{connectionTime.Minutes}m");
+                    if (connectionTime.TotalHours < 1)
+                        sbStatus.Append($" {connectionTime.Seconds}s");
+                    sbStatus.Append(")");
                 }
 
                 if (sbStatus.Length == 0)
@@ -386,6 +410,7 @@ namespace VpnIcon.ViewModels
             {
                 cvm.Dialer_DialCompleted(sender, new DialCompletedEventArgs(e.Connection.Handle, null, false, false, false, null));
             }
+            UpdateTrayIcon();
         }
 
         private void Watcher_Connected(object sender, RasConnectionEventArgs e)
@@ -398,6 +423,7 @@ namespace VpnIcon.ViewModels
         {
             Exception ex = e.GetException();
             ShowBalloon("Connection Error", $"{ex?.GetType().FullName} occured ('{ex?.Message}", icon: BalloonIcon.Error);
+            UpdateTrayIcon();
         }
 
         #endregion
@@ -502,6 +528,7 @@ namespace VpnIcon.ViewModels
                         newState = newVisibilityValue;
                 }
                 ExtraMenuItemsVisibility = newState;
+                AboutMenuItemEnabled = newState == Visibility.Visible;
             }
         }
 
@@ -549,6 +576,48 @@ namespace VpnIcon.ViewModels
         }
 
         #endregion
+
+
+        #region " AboutMenu Command "
+        private RelayCommand mAboutMenuCommand;
+
+        public ICommand AboutMenuCommand
+        {
+            get
+            {
+                if (mAboutMenuCommand == null)
+                    mAboutMenuCommand = new RelayCommand(doAboutMenuCommand, canAboutMenuCommand);
+
+                return mAboutMenuCommand;
+            }
+        }
+
+        public bool canAboutMenuCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return AboutMenuItemEnabled;
+        }
+
+        public void doAboutMenuCommand(object obj)
+        {
+            if (canAboutMenuCommand(obj))
+            {
+                AboutWindow aw = new AboutWindow();
+                aw.DataContext = this;
+
+                aw.ShowDialog();
+            }
+        }
+
+        public Visibility showAboutMenuCommand
+        {
+            get
+            {
+                return canAboutMenuCommand(null) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+        #endregion
+
 
         #endregion
 
