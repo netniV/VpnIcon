@@ -20,6 +20,8 @@ namespace VpnIcon.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        #region Public Constructors
+
         public MainViewModel() : base()
         {
             mPhoneBook = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.User));
@@ -36,24 +38,52 @@ namespace VpnIcon.ViewModels
             UpdateTrayIcon();
         }
 
-        #region · Properties ·
+        #endregion Public Constructors
 
-        #region · Internal Properties ·
+        #region Private Fields
 
-        protected Dispatcher Dispatcher { get; }
-        protected RasConnectionWatcher Watcher { get; }
+        private RelayCommand mAboutMenuCommand;
+        private bool mAboutMenuItemEnabled = true;
+        private ConnectionStatusBalloon mBalloon;
+        private BalloonTipEventArgs mBalloonTip;
+        private RelayCommand mConnectionCommand;
+        private List<ConnectionViewModel> mConnections = null;
+        private ObservableCollection<RasEntry> mEntries;
+        private RelayCommand mExitApplicationCommand;
+        private Visibility mExtraMenuItemsVisibility = Visibility.Visible;
+        private ConnectionsGroupsViewModel mGroupedMenuItems;
+        private Visibility mGroupingSeparatorVisibility = Visibility.Visible;
+        private ImageSource mIconSource;
+        private bool mIsWindows8Mode = false;
+        private PopupActivationMode mMenuActivationMode = GetMenuActivationModeFromWindows8Mode(false);
+        private RasPhoneBook mPhoneBook;
+        private ConnectionViewModel mSelectedConnection = null;
+        private RelayCommand mSetExtraMenuItemsVisiblityCommand;
+        private RelayCommand mShowAppBarCommand;
+        private RelayCommand mStartupCommand;
+        private ConnectionsGroupViewModel mUngroupedMenuItems;
 
-        protected List<ConnectionViewModel> Connections { get; set; }
+        #endregion Private Fields
 
-        #endregion
+        #region Public Properties
 
-        #region · Public Properties ·
+        public ICommand AboutMenuCommand
+        {
+            get
+            {
+                if (mAboutMenuCommand == null)
+                    mAboutMenuCommand = new RelayCommand(doAboutMenuCommand, canAboutMenuCommand);
 
+                return mAboutMenuCommand;
+            }
+        }
 
-        private bool mAboutMenuItemEnabled;
         public bool AboutMenuItemEnabled
         {
-            get { return mAboutMenuItemEnabled; }
+            get
+            {
+                return mAboutMenuItemEnabled;
+            }
             set
             {
                 if (value != mAboutMenuItemEnabled)
@@ -65,61 +95,67 @@ namespace VpnIcon.ViewModels
             }
         }
 
-        public string VersionInfo
+        public ConnectionStatusBalloon Balloon
         {
             get
             {
-                Assembly assembly = Assembly.GetEntryAssembly();
-                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-                return $"{fvi.ProductName} v{fvi.FileMajorPart}.{fvi.FileMinorPart} by {fvi.CompanyName}";
+                return mBalloon;
             }
-        }
-
-        private Visibility mGroupingSeparatorVisibility = Visibility.Visible;
-        public Visibility GroupingSeparatorVisibility
-        {
-            get { return mGroupingSeparatorVisibility; }
-            private set
+            set
             {
-                if (value != mGroupingSeparatorVisibility)
+                if (value != mBalloon)
                 {
-                    OnPropertyChanging("GroupingSeparatorVisibility");
-                    mGroupingSeparatorVisibility = value;
-                    OnPropertyChanged("GroupingSeparatorVisibility");
+                    OnPropertyChanging("Balloon");
+                    mBalloon = value;
+                    OnPropertyChanged("Balloon");
                 }
             }
         }
 
-
-        private Visibility mExtraMenuItemsVisibility = Visibility.Visible;
-        public Visibility ExtraMenuItemsVisibility
+        public BalloonTipEventArgs BalloonTip
         {
-            get { return mExtraMenuItemsVisibility; }
+            get
+            {
+                return mBalloonTip;
+            }
             set
             {
-                if (value != mExtraMenuItemsVisibility)
+                if (value != mBalloonTip)
                 {
-                    OnPropertyChanging("ExtraMenuItemsVisibility");
-                    mExtraMenuItemsVisibility = value;
-                    OnPropertyChanged("ExtraMenuItemsVisibility");
+                    OnPropertyChanging("BalloonTip");
+                    mBalloonTip = value;
+                    OnPropertyChanged("BalloonTip");
                 }
             }
         }
 
-
-        public bool StartupEnabled
+        public ICommand ConnectionCommand
         {
             get
             {
-                return StartUpHandler.IsApplicationStartupForCurrentUser();
-            }
-            set
-            {
-                OnPropertyChanging(nameof(StartupEnabled));
-                OnPropertyChanged(nameof(StartupEnabled));
+                if (mConnectionCommand == null)
+                    mConnectionCommand = new RelayCommand(doConnectionCommand, canConnectionCommand);
+
+                return mConnectionCommand;
             }
         }
 
+        public List<ConnectionViewModel> Connections
+        {
+            get
+            {
+                return mConnections;
+            }
+            set
+            {
+                if (value != mConnections)
+                {
+                    OnPropertyChanging(nameof(Connections));
+                    mConnections = value;
+                    OnPropertyChanged(nameof(Connections));
+                }
+            }
+        }
 
         public string ConnectionStatus
         {
@@ -151,57 +187,12 @@ namespace VpnIcon.ViewModels
             }
         }
 
-
-        private BalloonTipEventArgs mBalloonTip;
-        public BalloonTipEventArgs BalloonTip
-        {
-            get { return mBalloonTip; }
-            set
-            {
-                if (value != mBalloonTip)
-                {
-                    OnPropertyChanging("BalloonTip");
-                    mBalloonTip = value;
-                    OnPropertyChanged("BalloonTip");
-                }
-            }
-        }
-
-        private ConnectionStatusBalloon mBalloon;
-        public ConnectionStatusBalloon Balloon
-        {
-            get { return mBalloon; }
-            set
-            {
-                if (value != mBalloon)
-                {
-                    OnPropertyChanging("Balloon");
-                    mBalloon = value;
-                    OnPropertyChanged("Balloon");
-                }
-            }
-        }
-
-        private RasPhoneBook mPhoneBook;
-        public RasPhoneBook PhoneBook
-        {
-            get { return mPhoneBook; }
-            set
-            {
-                if (value != mPhoneBook)
-                {
-                    OnPropertyChanging("PhoneBook");
-                    mPhoneBook = value;
-                    Entries = mPhoneBook?.Entries;
-                    OnPropertyChanged("PhoneBook");
-                }
-            }
-        }
-
-        private ObservableCollection<RasEntry> mEntries;
         public ObservableCollection<RasEntry> Entries
         {
-            get { return mEntries; }
+            get
+            {
+                return mEntries;
+            }
             set
             {
                 if (value != mEntries)
@@ -218,40 +209,40 @@ namespace VpnIcon.ViewModels
             }
         }
 
-        private ImageSource mIconSource;
-        public ImageSource IconSource
+        public ICommand ExitApplicationCommand
         {
-            get { return mIconSource; }
+            get
+            {
+                if (mExitApplicationCommand == null)
+                    mExitApplicationCommand = new RelayCommand(doExitApplicationCommand, canExitApplicationCommand);
+
+                return mExitApplicationCommand;
+            }
+        }
+
+        public Visibility ExtraMenuItemsVisibility
+        {
+            get
+            {
+                return mExtraMenuItemsVisibility;
+            }
             set
             {
-                if (value != mIconSource)
+                if (value != mExtraMenuItemsVisibility)
                 {
-                    OnPropertyChanging("IconSource");
-                    mIconSource = value;
-                    OnPropertyChanged("IconSource");
+                    OnPropertyChanging("ExtraMenuItemsVisibility");
+                    mExtraMenuItemsVisibility = value;
+                    OnPropertyChanged("ExtraMenuItemsVisibility");
                 }
             }
         }
 
-        private ConnectionsGroupViewModel mUngroupedMenuItems;
-        public ConnectionsGroupViewModel UngroupedMenuItems
-        {
-            get { return mUngroupedMenuItems; }
-            set
-            {
-                if (value != mUngroupedMenuItems)
-                {
-                    OnPropertyChanging("UngroupedMenuItems");
-                    mUngroupedMenuItems = value;
-                    OnPropertyChanged("UngroupedMenuItems");
-                }
-            }
-        }
-
-        private ConnectionsGroupsViewModel mGroupedMenuItems;
         public ConnectionsGroupsViewModel GroupedMenuItems
         {
-            get { return mGroupedMenuItems; }
+            get
+            {
+                return mGroupedMenuItems;
+            }
             set
             {
                 if (value != mGroupedMenuItems)
@@ -263,27 +254,357 @@ namespace VpnIcon.ViewModels
             }
         }
 
-        #endregion
-
-        #endregion
-
-        #region · Methods ·
-
-        #region · Internal Methods ·
-
-        private void ShowBalloon(string title, string detail)
+        public Visibility GroupingSeparatorVisibility
         {
-            ShowBalloon(title, detail, IconHandler.ConnectedSource);
-        }
-        private void ShowBalloon(string title, string detail, ImageSource imageSource = null, BalloonIcon icon = BalloonIcon.Info, bool useCustom = false)
-        {
-            Dispatcher.BeginInvoke(new Action(() =>
+            get
             {
-                if (useCustom)
-                    Balloon = new ConnectionStatusBalloon() { Title = title, Detail = detail, ImageSource = imageSource };
+                return mGroupingSeparatorVisibility;
+            }
+            private set
+            {
+                if (value != mGroupingSeparatorVisibility)
+                {
+                    OnPropertyChanging("GroupingSeparatorVisibility");
+                    mGroupingSeparatorVisibility = value;
+                    OnPropertyChanged("GroupingSeparatorVisibility");
+                }
+            }
+        }
+
+        public ImageSource IconSource
+        {
+            get
+            {
+                return mIconSource;
+            }
+            set
+            {
+                if (value != mIconSource)
+                {
+                    OnPropertyChanging("IconSource");
+                    mIconSource = value;
+                    OnPropertyChanged("IconSource");
+                }
+            }
+        }
+
+        public static bool IsWindows8 => (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor > 1);
+
+        public bool IsWindows8Mode
+        {
+            get
+            {
+                return mIsWindows8Mode;
+            }
+            set
+            {
+                if (value != mIsWindows8Mode)
+                {
+                    OnPropertyChanging(nameof(IsWindows8Mode));
+                    mIsWindows8Mode = value;
+                    MenuActivationMode = GetMenuActivationModeFromWindows8Mode(value);
+                    UpdateWindowMode(value);
+                    OnPropertyChanged(nameof(IsWindows8Mode));
+                }
+            }
+        }
+
+        public PopupActivationMode MenuActivationMode
+        {
+            get
+            {
+                return mMenuActivationMode;
+            }
+            set
+            {
+                if (value != mMenuActivationMode)
+                {
+                    OnPropertyChanging(nameof(MenuActivationMode));
+                    mMenuActivationMode = value;
+                    OnPropertyChanged(nameof(MenuActivationMode));
+                }
+            }
+        }
+
+        public RasPhoneBook PhoneBook
+        {
+            get
+            {
+                return mPhoneBook;
+            }
+            set
+            {
+                if (value != mPhoneBook)
+                {
+                    OnPropertyChanging("PhoneBook");
+                    mPhoneBook = value;
+                    Entries = mPhoneBook?.Entries;
+                    OnPropertyChanged("PhoneBook");
+                }
+            }
+        }
+
+        public ConnectionViewModel SelectedConnection
+        {
+            get
+            {
+                return mSelectedConnection;
+            }
+            set
+            {
+                if (value != mSelectedConnection)
+                {
+                    OnPropertyChanging(nameof(SelectedConnection));
+                    mSelectedConnection = value;
+                    OnPropertyChanged(nameof(SelectedConnection));
+                }
+            }
+        }
+
+        public ICommand SetExtraMenuItemsVisiblityCommand
+        {
+            get
+            {
+                if (mSetExtraMenuItemsVisiblityCommand == null)
+                    mSetExtraMenuItemsVisiblityCommand = new RelayCommand(doSetExtraMenuItemsVisiblityCommand, canSetExtraMenuItemsVisiblityCommand);
+
+                return mSetExtraMenuItemsVisiblityCommand;
+            }
+        }
+
+        public Visibility showAboutMenuCommand
+        {
+            get
+            {
+                return canAboutMenuCommand(null) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public ICommand ShowAppBarCommand
+        {
+            get
+            {
+                if (mShowAppBarCommand == null)
+                    mShowAppBarCommand = new RelayCommand(doShowAppBarCommand, canShowAppBarCommand);
+
+                return mShowAppBarCommand;
+            }
+        }
+
+        public Visibility showSetExtraMenuItemsVisiblityCommand
+        {
+            get
+            {
+                return canSetExtraMenuItemsVisiblityCommand(null) ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public ICommand StartupCommand
+        {
+            get
+            {
+                if (mStartupCommand == null)
+                    mStartupCommand = new RelayCommand(doStartupCommand, canStartupCommand);
+
+                return mStartupCommand;
+            }
+        }
+
+        public bool StartupEnabled
+        {
+            get
+            {
+                return StartUpHandler.IsApplicationStartupForCurrentUser();
+            }
+            set
+            {
+                OnPropertyChanging(nameof(StartupEnabled));
+                OnPropertyChanged(nameof(StartupEnabled));
+            }
+        }
+
+        public ConnectionsGroupViewModel UngroupedMenuItems
+        {
+            get
+            {
+                return mUngroupedMenuItems;
+            }
+            set
+            {
+                if (value != mUngroupedMenuItems)
+                {
+                    OnPropertyChanging("UngroupedMenuItems");
+                    mUngroupedMenuItems = value;
+                    OnPropertyChanged("UngroupedMenuItems");
+                }
+            }
+        }
+
+        public string VersionInfo
+        {
+            get
+            {
+                Assembly assembly = Assembly.GetEntryAssembly();
+                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                return $"{fvi.ProductName} v{fvi.FileMajorPart}.{fvi.FileMinorPart} by {fvi.CompanyName}";
+            }
+        }
+
+        #endregion Public Properties
+
+        #region Protected Properties
+
+        protected Dispatcher Dispatcher { get; }
+        protected RasConnectionWatcher Watcher { get; }
+
+        #endregion Protected Properties
+
+        #region Public Methods
+
+        public bool canAboutMenuCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return AboutMenuItemEnabled;
+        }
+
+        public bool canConnectionCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return !(((obj as ConnectionViewModel)?.IsChanging) ?? false);
+        }
+
+        public bool canExitApplicationCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return true;
+        }
+
+        public bool canSetExtraMenuItemsVisiblityCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return !IsWindows8Mode && obj != null;
+        }
+
+        public bool canShowAppBarCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return IsWindows8Mode;
+        }
+
+        public bool canStartupCommand(object obj)
+        {
+            //TODO: Place code here to validate when command can run
+            return true;
+        }
+
+        public void doAboutMenuCommand(object obj)
+        {
+            if (canAboutMenuCommand(obj))
+            {
+                AboutWindow aw = new AboutWindow();
+                aw.DataContext = this;
+
+                aw.ShowDialog();
+            }
+        }
+
+        public async void doConnectionCommand(object obj)
+        {
+            if (canConnectionCommand(obj))
+            {
+                ConnectionViewModel cvm = obj as ConnectionViewModel;
+                if (cvm != null)
+                    if (cvm.IsConnected)
+                        await cvm.Disconnect();
+                    else
+                        await cvm.Connect();
+            }
+        }
+
+        public void doExitApplicationCommand(object obj)
+        {
+            if (canExitApplicationCommand(obj))
+            {
+                App.Current?.Shutdown();
+            }
+        }
+
+        public void doSetExtraMenuItemsVisiblityCommand(object obj)
+        {
+            if (canSetExtraMenuItemsVisiblityCommand(obj))
+            {
+                Visibility newState = Visibility.Visible;
+                bool newBooleanValue = false;
+                if (bool.TryParse(obj.ToString(), out newBooleanValue))
+                    newState = (newBooleanValue) ? Visibility.Visible : Visibility.Collapsed;
                 else
-                    BalloonTip = new BalloonTipEventArgs() { Icon = icon, Message = detail, Title = title };
-            }));
+                {
+                    Visibility newVisibilityValue = Visibility.Collapsed;
+                    if (Enum.TryParse<Visibility>(obj.ToString(), out newVisibilityValue))
+                        newState = newVisibilityValue;
+                }
+                ExtraMenuItemsVisibility = newState;
+                AboutMenuItemEnabled = newState == Visibility.Visible;
+            }
+        }
+
+        public void doShowAppBarCommand(object obj)
+        {
+            if (canShowAppBarCommand(obj))
+            {
+                Window window = App.Current.MainWindow;
+                if (window != null)
+                    if (window.Visibility == Visibility.Visible)
+                        window.SlideIn();
+                    else
+                        window.SlideOut();
+            }
+        }
+
+        public void doStartupCommand(object obj)
+        {
+            if (canStartupCommand(obj))
+            {
+                OnPropertyChanging(nameof(StartupEnabled));
+                if (StartupEnabled)
+                    StartUpHandler.RemoveApplicationFromCurrentUserStartup();
+                else
+                    StartUpHandler.AddApplicationToCurrentUserStartup();
+
+                OnPropertyChanged(nameof(StartupEnabled));
+            }
+        }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        private static PopupActivationMode GetMenuActivationModeFromWindows8Mode(bool value)
+        {
+            return value ? PopupActivationMode.RightClick : PopupActivationMode.LeftOrRightClick;
+        }
+
+        private void Connection_DialCompleted(object sender, DialCompletedEventArgs e)
+        {
+            ConnectionViewModel cvm = sender as ConnectionViewModel;
+
+            if (e.Error != null)
+                ShowBalloon($"{cvm.FullName}", $"{e.Error.GetType().Name} + {e.Error.Message}", icon: BalloonIcon.Error);
+            else if (e.TimedOut)
+                ShowBalloon($"{cvm.FullName}", $"Connection timed out", icon: BalloonIcon.Warning);
+            else if (e.Cancelled)
+                ShowBalloon($"{cvm.FullName}", $"Connection was cancelled", icon: BalloonIcon.Warning);
+        }
+
+        private void Connection_Error(object sender, System.IO.ErrorEventArgs e)
+        {
+            ConnectionViewModel cvm = sender as ConnectionViewModel;
+            ShowBalloon($"{cvm.FullName}", $"{e.GetException().GetType().Name} + {e.GetException().Message}", icon: BalloonIcon.Error);
+        }
+
+        private void Connection_StateChanged(object sender, StateChangedEventArgs e)
+        {
+            //ShowBalloon((sender as ConnectionViewModel).GroupName, e.State.ToString(), useCustom: true);
         }
 
         private async Task CreateCollectionContext()
@@ -324,21 +645,6 @@ namespace VpnIcon.ViewModels
             });
         }
 
-        private async Task UpdateConnectionGroups(ConnectionsGroupViewModel groupedItems, ConnectionsGroupViewModel ungroupedItems, IGrouping<string, ConnectionViewModel> group)
-        {
-            await Task.Run(() =>
-            {
-                var localItems = groupedItems;
-                var localGroup = group;
-
-                foreach (var connection in group)
-                {
-                    ungroupedItems.Remove(connection);
-                    groupedItems.Add(connection);
-                }
-            });
-        }
-
         private async Task<ConnectionsGroupViewModel> CreateConnections(ObservableCollection<RasEntry> entries)
         {
             return await Task.Run<ConnectionsGroupViewModel>(() =>
@@ -358,39 +664,6 @@ namespace VpnIcon.ViewModels
 
                 return localConnections;
             });
-
-        }
-
-        private void UpdateTrayIcon()
-        {
-            Dispatcher.BeginInvoke(new Action(() => { IconSource = RasConnection.GetActiveConnections()?.Count() > 0 ? IconHandler.ConnectedSource : IconHandler.DisconnectedSource; }));
-        }
-
-        #endregion
-
-        #region · Event Handlers ·
-
-        private void Connection_Error(object sender, System.IO.ErrorEventArgs e)
-        {
-            ConnectionViewModel cvm = sender as ConnectionViewModel;
-            ShowBalloon($"{cvm.FullName}", $"{e.GetException().GetType().Name} + {e.GetException().Message}", icon: BalloonIcon.Error);
-        }
-
-        private void Connection_StateChanged(object sender, StateChangedEventArgs e)
-        {
-            //ShowBalloon((sender as ConnectionViewModel).GroupName, e.State.ToString(), useCustom: true);
-        }
-
-        private void Connection_DialCompleted(object sender, DialCompletedEventArgs e)
-        {
-            ConnectionViewModel cvm = sender as ConnectionViewModel;
-
-            if (e.Error != null)
-                ShowBalloon($"{cvm.FullName}", $"{e.Error.GetType().Name} + {e.Error.Message}", icon: BalloonIcon.Error);
-            else if (e.TimedOut)
-                ShowBalloon($"{cvm.FullName}", $"Connection timed out", icon: BalloonIcon.Warning);
-            else if (e.Cancelled)
-                ShowBalloon($"{cvm.FullName}", $"Connection was cancelled", icon: BalloonIcon.Warning);
         }
 
         private void Entries_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -400,6 +673,58 @@ namespace VpnIcon.ViewModels
             {
                 System.Windows.MessageBox.Show(t.Exception?.Message, t.Exception?.GetType().FullName);
             }
+        }
+
+        private void ShowBalloon(string title, string detail)
+        {
+            ShowBalloon(title, detail, IconHandler.ConnectedSource);
+        }
+
+        private void ShowBalloon(string title, string detail, ImageSource imageSource = null, BalloonIcon icon = BalloonIcon.Info, bool useCustom = false)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                if (useCustom)
+                    Balloon = new ConnectionStatusBalloon() { Title = title, Detail = detail, ImageSource = imageSource };
+                else
+                    BalloonTip = new BalloonTipEventArgs() { Icon = icon, Message = detail, Title = title };
+            }));
+        }
+
+        private async Task UpdateConnectionGroups(ConnectionsGroupViewModel groupedItems, ConnectionsGroupViewModel ungroupedItems, IGrouping<string, ConnectionViewModel> group)
+        {
+            await Task.Run(() =>
+            {
+                var localItems = groupedItems;
+                var localGroup = group;
+
+                foreach (var connection in group)
+                {
+                    ungroupedItems.Remove(connection);
+                    groupedItems.Add(connection);
+                }
+            });
+        }
+
+        private void UpdateTrayIcon()
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                IsWindows8Mode = IsWindows8;
+                IconSource = RasConnection.GetActiveConnections()?.Count() > 0 ? IconHandler.ConnectedSource : IconHandler.DisconnectedSource;
+            }));
+        }
+
+        private void UpdateWindowMode(bool value)
+        {
+            Window win = App.Current.MainWindow;
+            win.SlideIn();
+        }
+
+        private void Watcher_Connected(object sender, RasConnectionEventArgs e)
+        {
+            ShowBalloon("Connection established", $"{e.Connection?.EntryName} has been dialed and is now active.");
+            UpdateTrayIcon();
         }
 
         private void Watcher_Disconnected(object sender, RasConnectionEventArgs e)
@@ -413,12 +738,6 @@ namespace VpnIcon.ViewModels
             UpdateTrayIcon();
         }
 
-        private void Watcher_Connected(object sender, RasConnectionEventArgs e)
-        {
-            ShowBalloon("Connection established", $"{e.Connection?.EntryName} has been dialed and is now active.");
-            UpdateTrayIcon();
-        }
-
         private void Watcher_Error(object sender, System.IO.ErrorEventArgs e)
         {
             Exception ex = e.GetException();
@@ -426,202 +745,6 @@ namespace VpnIcon.ViewModels
             UpdateTrayIcon();
         }
 
-        #endregion
-
-        #region · Commands ·
-
-        #region · Connection Command ·
-        private RelayCommand mConnectionCommand;
-
-        public ICommand ConnectionCommand
-        {
-            get
-            {
-                if (mConnectionCommand == null)
-                    mConnectionCommand = new RelayCommand(doConnectionCommand, canConnectionCommand);
-
-                return mConnectionCommand;
-            }
-        }
-
-        public bool canConnectionCommand(object obj)
-        {
-            //TODO: Place code here to validate when command can run
-            return !(((obj as ConnectionViewModel)?.IsChanging) ?? false);
-        }
-
-        public async void doConnectionCommand(object obj)
-        {
-            if (canConnectionCommand(obj))
-            {
-                ConnectionViewModel cvm = obj as ConnectionViewModel;
-                if (cvm != null)
-                    if (cvm.IsConnected)
-                        await cvm.Disconnect();
-                    else
-                        await cvm.Connect();
-            }
-        }
-        #endregion
-
-        #region · ExitApplication Command ·
-        private RelayCommand mExitApplicationCommand;
-
-        public ICommand ExitApplicationCommand
-        {
-            get
-            {
-                if (mExitApplicationCommand == null)
-                    mExitApplicationCommand = new RelayCommand(doExitApplicationCommand, canExitApplicationCommand);
-
-                return mExitApplicationCommand;
-            }
-        }
-
-        public bool canExitApplicationCommand(object obj)
-        {
-            //TODO: Place code here to validate when command can run
-            return true;
-        }
-
-        public void doExitApplicationCommand(object obj)
-        {
-            if (canExitApplicationCommand(obj))
-            {
-                App.Current?.Shutdown();
-            }
-        }
-        #endregion
-
-        #region " SetExtraMenuItemsVisiblity Command "
-        private RelayCommand mSetExtraMenuItemsVisiblityCommand;
-
-        public ICommand SetExtraMenuItemsVisiblityCommand
-        {
-            get
-            {
-                if (mSetExtraMenuItemsVisiblityCommand == null)
-                    mSetExtraMenuItemsVisiblityCommand = new RelayCommand(doSetExtraMenuItemsVisiblityCommand, canSetExtraMenuItemsVisiblityCommand);
-
-                return mSetExtraMenuItemsVisiblityCommand;
-            }
-        }
-
-        public bool canSetExtraMenuItemsVisiblityCommand(object obj)
-        {
-            //TODO: Place code here to validate when command can run
-            return obj != null;
-        }
-
-        public void doSetExtraMenuItemsVisiblityCommand(object obj)
-        {
-            if (canSetExtraMenuItemsVisiblityCommand(obj))
-            {
-                Visibility newState = Visibility.Visible;
-                bool newBooleanValue = false;
-                if (bool.TryParse(obj.ToString(), out newBooleanValue))
-                    newState = (newBooleanValue) ? Visibility.Visible : Visibility.Collapsed;
-                else
-                {
-                    Visibility newVisibilityValue = Visibility.Collapsed;
-                    if (Enum.TryParse<Visibility>(obj.ToString(), out newVisibilityValue))
-                        newState = newVisibilityValue;
-                }
-                ExtraMenuItemsVisibility = newState;
-                AboutMenuItemEnabled = newState == Visibility.Visible;
-            }
-        }
-
-        public Visibility showSetExtraMenuItemsVisiblityCommand
-        {
-            get
-            {
-                return canSetExtraMenuItemsVisiblityCommand(null) ? Visibility.Visible : Visibility.Collapsed;
-            }
-        }
-        #endregion
-
-        #region " Startup Command "
-        private RelayCommand mStartupCommand;
-
-        public ICommand StartupCommand
-        {
-            get
-            {
-                if (mStartupCommand == null)
-                    mStartupCommand = new RelayCommand(doStartupCommand, canStartupCommand);
-
-                return mStartupCommand;
-            }
-        }
-
-        public bool canStartupCommand(object obj)
-        {
-            //TODO: Place code here to validate when command can run
-            return true;
-        }
-
-        public void doStartupCommand(object obj)
-        {
-            if (canStartupCommand(obj))
-            {
-                OnPropertyChanging(nameof(StartupEnabled));
-                if (StartupEnabled)
-                    StartUpHandler.RemoveApplicationFromCurrentUserStartup();
-                else
-                    StartUpHandler.AddApplicationToCurrentUserStartup();
-
-                OnPropertyChanged(nameof(StartupEnabled));
-            }
-        }
-
-        #endregion
-
-
-        #region " AboutMenu Command "
-        private RelayCommand mAboutMenuCommand;
-
-        public ICommand AboutMenuCommand
-        {
-            get
-            {
-                if (mAboutMenuCommand == null)
-                    mAboutMenuCommand = new RelayCommand(doAboutMenuCommand, canAboutMenuCommand);
-
-                return mAboutMenuCommand;
-            }
-        }
-
-        public bool canAboutMenuCommand(object obj)
-        {
-            //TODO: Place code here to validate when command can run
-            return AboutMenuItemEnabled;
-        }
-
-        public void doAboutMenuCommand(object obj)
-        {
-            if (canAboutMenuCommand(obj))
-            {
-                AboutWindow aw = new AboutWindow();
-                aw.DataContext = this;
-
-                aw.ShowDialog();
-            }
-        }
-
-        public Visibility showAboutMenuCommand
-        {
-            get
-            {
-                return canAboutMenuCommand(null) ? Visibility.Visible : Visibility.Collapsed;
-            }
-        }
-        #endregion
-
-
-        #endregion
-
-        #endregion
+        #endregion Private Methods
     }
 }
-

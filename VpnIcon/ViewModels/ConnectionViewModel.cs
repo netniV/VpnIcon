@@ -2,11 +2,21 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace VpnIcon.ViewModels
 {
+    public enum ConnectionStatus
+    {
+        Unknown,
+        Disconnected,
+        Disconnecting,
+        Connected,
+        Connecting
+    }
+
     public class ConnectionViewModel : MenuItemViewModel
     {
         public ConnectionViewModel(MenuItemViewModel parentViewModel) : base(parentViewModel)
@@ -26,6 +36,7 @@ namespace VpnIcon.ViewModels
                     GroupName = null;
                     if (value != null)
                     {
+                        ConnectionStatus = IsConnected ? ConnectionStatus.Connected : ConnectionStatus.Disconnected;
                         Regex nameMatch = new Regex("(.*?)\\((.*?)\\)");
                         var result = nameMatch.Match(value.Name);
                         if (result.Success)
@@ -39,6 +50,7 @@ namespace VpnIcon.ViewModels
                     else
                     {
                         Name = "Unknown";
+                        ConnectionStatus = ConnectionStatus.Unknown;
                     }
 
                     OnPropertyChanged("Entry");
@@ -51,7 +63,52 @@ namespace VpnIcon.ViewModels
         public System.Guid Id => (Entry?.Id).GetValueOrDefault();
         public RasConnection ActiveConnection => RasConnection.GetActiveConnections().Where(x => x.EntryId == Id).FirstOrDefault();
 
+        public RasEntryType EntryType => Entry?.EntryType ?? RasEntryType.None;
+
+        public string VpnType => (Entry?.VpnStrategy == RasVpnStrategy.Default) ? "" : Entry?.VpnStrategy.ToString().Replace("Only", "").Replace("First", "");
+
+        public string PhoneNumber => Entry?.PhoneNumber;
+
         public bool IsChanging => !IsEnabled;
+
+        public string Abbreviation
+        {
+            get
+            {
+                string fullName = FullName;
+                StringBuilder abbr = new StringBuilder();
+                if (!string.IsNullOrWhiteSpace(fullName))
+                    for (int index = 0; index < fullName.Length; index++)
+                    {
+                        char currentChar = fullName[index];
+                        if (Char.IsUpper(currentChar))
+                        {
+                            if (index == 0 || !Char.IsLetterOrDigit(fullName[index - 1]))
+                            {
+                                abbr.Append(currentChar);
+                            }
+                        }
+                    }
+
+                return (abbr.Length == 0) ? "??" : abbr.ToString().ToLower();
+            }
+        }
+
+
+        private ConnectionStatus mConnectionStatus = ConnectionStatus.Unknown;
+        public ConnectionStatus ConnectionStatus
+        {
+            get { return mConnectionStatus; }
+            set
+            {
+                if (value != mConnectionStatus)
+                {
+                    OnPropertyChanging(nameof(ConnectionStatus));
+                    mConnectionStatus = value;
+                    OnPropertyChanged(nameof(ConnectionStatus));
+                }
+            }
+        }
 
         public override bool IsEnabled
         {
@@ -79,6 +136,8 @@ namespace VpnIcon.ViewModels
                 base.IsConnected = (ActiveConnection != null);
             }
         }
+
+
         public RasHandle Handle { get; private set; }
 
         private RasDialer Dialer { get; set; }
@@ -132,6 +191,7 @@ namespace VpnIcon.ViewModels
                         return;
 
                     Dialer = new RasDialer();
+                    ConnectionStatus = ConnectionStatus.Connecting;
                 }
 
                 try
@@ -142,6 +202,7 @@ namespace VpnIcon.ViewModels
                 catch (Exception ex)
                 {
                     Dialer_Error(this, new System.IO.ErrorEventArgs(ex));
+                    ConnectionStatus = ConnectionStatus.Disconnected;
                 }
             });
         }
@@ -159,6 +220,7 @@ namespace VpnIcon.ViewModels
                         return;
 
                     Dialer = new RasDialer();
+                    ConnectionStatus = ConnectionStatus.Disconnecting;
                 }
 
                 try
@@ -169,6 +231,7 @@ namespace VpnIcon.ViewModels
                 catch (Exception ex)
                 {
                     Dialer_Error(this, new System.IO.ErrorEventArgs(ex));
+                    ConnectionStatus = ConnectionStatus.Disconnected;
                 }
             });
         }
@@ -202,6 +265,7 @@ namespace VpnIcon.ViewModels
             DialCompleted?.Invoke(this, e);
             lock (DialerLock)
             {
+                ConnectionStatus = e.Connected ? ConnectionStatus.Connected : ConnectionStatus.Disconnected;
                 if (Dialer != null)
                 {
                     Dialer.Dispose();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using VpnIcon.Handler;
 
 namespace VpnIcon.Windows
 {
@@ -11,6 +12,13 @@ namespace VpnIcon.Windows
         public MainWindow()
         {
             InitializeComponent();
+
+            this.SizeChanged += MainWindow_SizeChanged;
+        }
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
         }
 
         #region IDisposable Support
@@ -52,5 +60,10 @@ namespace VpnIcon.Windows
             // GC.SuppressFinalize(this);
         }
         #endregion
+
+        private void mainWindow_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.SlideIn();
+        }
     }
 }

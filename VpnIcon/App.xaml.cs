@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using VpnIcon.Handler;
 using VpnIcon.Windows;
 
 namespace VpnIcon
@@ -17,7 +18,9 @@ namespace VpnIcon
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            App.Current.MainWindow = new Windows.MainWindow();
+            Window win = new Windows.MainWindow();
+            App.Current.MainWindow = win;
+            win.SlideIn();
 
             //create the notifyicon (it's a resource declared in NotifyIconResources.xaml
             //notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
@@ -32,6 +35,10 @@ namespace VpnIcon
                 if (history == null)
                     history =
                         new ProgramVersions(
+                            new ProgramVersion("2.0",
+                                "Added Windows 10 AppBar Style",
+                                "Added Connecting/Disconnecting statuses"
+                                ),
                             new ProgramVersion("1.2",
                                 "Added error window to display unhandled errors",
                                 "Fixed issue where icon didn't show disconnected state",
