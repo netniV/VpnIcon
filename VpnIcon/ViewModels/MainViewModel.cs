@@ -24,11 +24,12 @@ namespace VpnIcon.ViewModels
 
         public MainViewModel() : base()
         {
-            mPhoneBook = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.User));
             mIconSource = IconHandler.DisconnectedSource;
 
             Dispatcher = Dispatcher.CurrentDispatcher;
-            PhoneBook = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.User));
+            mPhoneBookUser = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.User));
+            mPhoneBookSystem = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.AllUsers));
+            CreatePhoneEntries();
 
             Watcher = new RasConnectionWatcher() { EnableRaisingEvents = true };
             Watcher.Connected += Watcher_Connected;
@@ -56,7 +57,7 @@ namespace VpnIcon.ViewModels
         private ImageSource mIconSource;
         private bool mIsWindows8Mode = false;
         private PopupActivationMode mMenuActivationMode = GetMenuActivationModeFromWindows8Mode(false);
-        private RasPhoneBook mPhoneBook;
+        private RasPhoneBook mPhoneBookUser;
         private ConnectionViewModel mSelectedConnection = null;
         private RelayCommand mSetExtraMenuItemsVisiblityCommand;
         private RelayCommand mShowAppBarCommand;
@@ -326,22 +327,64 @@ namespace VpnIcon.ViewModels
             }
         }
 
-        public RasPhoneBook PhoneBook
+        public RasPhoneBook PhoneBookUser
         {
             get
             {
-                return mPhoneBook;
+                return mPhoneBookUser;
             }
             set
             {
-                if (value != mPhoneBook)
+                if (value != mPhoneBookUser)
                 {
-                    OnPropertyChanging("PhoneBook");
-                    mPhoneBook = value;
-                    Entries = mPhoneBook?.Entries;
-                    OnPropertyChanged("PhoneBook");
+                    OnPropertyChanging("PhoneBookUser");
+                    mPhoneBookUser = value;
+                    CreatePhoneEntries();
+                    OnPropertyChanged("PhoneBookUser");
                 }
             }
+        }
+
+
+        private RasPhoneBook mPhoneBookSystem = null;
+        public RasPhoneBook PhoneBookSystem
+        {
+            get { return mPhoneBookSystem; }
+            set
+            {
+                if (value != mPhoneBookSystem)
+                {
+                    OnPropertyChanging(nameof(PhoneBookSystem));
+                    mPhoneBookSystem = value;
+                    CreatePhoneEntries(); 
+                    OnPropertyChanged(nameof(PhoneBookSystem));
+                }
+            }
+        }
+
+        private void CreatePhoneEntries()
+        {
+            if (!Dispatcher.CheckAccess())
+            {
+                Dispatcher.BeginInvoke(new Action(() => { CreatePhoneEntries(); }), DispatcherPriority.Normal, new object[] { });
+            }
+            else
+            {
+                ObservableCollection<RasEntry> entries = null;
+                if (mPhoneBookUser?.Entries != null)
+                    entries = CreateJoinedCollection(mPhoneBookUser.Entries, mPhoneBookSystem?.Entries);
+                else if (mPhoneBookSystem?.Entries != null)
+                    entries = CreateJoinedCollection(mPhoneBookSystem.Entries, mPhoneBookUser?.Entries);
+                Entries = entries;
+            }
+        }
+
+        private ObservableCollection<RasEntry> CreateJoinedCollection(ObservableCollection<RasEntry> entries1, ObservableCollection<RasEntry> entries2)
+        {
+            if (entries2 == null)
+                return entries1;
+            else
+                return new ObservableCollection<RasEntry>(entries1.Union(entries2));
         }
 
         public ConnectionViewModel SelectedConnection

@@ -242,7 +242,7 @@ namespace VpnIcon.ViewModels
             Dialer.DialCompleted += Dialer_DialCompleted;
             Dialer.StateChanged += Dialer_StateChanged;
             Dialer.AllowUseStoredCredentials = true;
-            Dialer.PhoneBookPath = RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.User);
+            Dialer.PhoneBookPath = Entry.Owner.FileName;
             Dialer.EntryName = Entry.Name;
         }
 

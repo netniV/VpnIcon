@@ -35,6 +35,8 @@ namespace VpnIcon
                 if (history == null)
                     history =
                         new ProgramVersions(
+                            new ProgramVersion("2.1",
+                                "Added system entry support"),
                             new ProgramVersion("2.0",
                                 "Added Windows 10 AppBar Style",
                                 "Added Connecting/Disconnecting statuses"

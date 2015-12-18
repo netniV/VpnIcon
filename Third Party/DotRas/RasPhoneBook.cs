@@ -14,7 +14,6 @@
 
 namespace DotRas
 {
-    using DotRas.Design;
     using DotRas.Internal;
     using DotRas.Properties;
     using System;
@@ -177,6 +176,8 @@ namespace DotRas
                     {
                         throw new InvalidOperationException();
                     }
+                    if (entry.Owner == null)
+                        entry.Owner = this;
 
                     this.Entries.Add(entry);
                 }
