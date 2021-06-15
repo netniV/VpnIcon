@@ -1,0 +1,6 @@
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\obj\Debug\NotifyIconWpf.csproj.AssemblyReference.cache
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\obj\Debug\NotifyIconWpf.csproj.CoreCompileInputs.cache
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\obj\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Source\BVITS\VpnIcon\Third Party\NotifyIconWpf\obj\Debug\Hardcodet.Wpf.TaskbarNotification.pdb

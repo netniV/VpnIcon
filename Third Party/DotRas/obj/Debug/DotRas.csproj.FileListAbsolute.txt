@@ -1,0 +1,11 @@
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.xml
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.dll
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.pdb
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.dll.CodeAnalysisLog.xml
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.dll.lastcodeanalysissucceeded
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.csproj.AssemblyReference.cache
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.Properties.Resources.resources
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.csproj.GenerateResource.cache
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.csproj.CoreCompileInputs.cache
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.dll
+C:\Source\BVITS\VpnIcon\Third Party\DotRas\obj\Debug\DotRas.pdb

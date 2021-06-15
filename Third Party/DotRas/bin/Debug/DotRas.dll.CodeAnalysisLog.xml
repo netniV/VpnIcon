@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2019\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="16.0">
+ <Targets>
+  <Target Name="C:\Source\BVITS\VpnIcon\Third Party\DotRas\bin\Debug\DotRas.dll">
+   <Modules>
+    <Module Name="dotras.dll">
+     <Namespaces>
+      <Namespace Name="DotRas">
+       <Types>
+        <Type Name="InvalidHandleException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="SecurityRuleSetLevel2MethodsShouldNotBeProtectedWithLinkDemandsFxCopRule" Category="Microsoft.Security" CheckId="CA2135" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="InvalidHandleException.cs" Line="127">'InvalidHandleException.GetObjectData(SerializationInfo, StreamingContext)' is protected with a LinkDemand for 'SecurityPermissionAttribute'.  In the level 2 security rule set, it should be protected by being security critical instead.  Remove the LinkDemand and mark 'InvalidHandleException.GetObjectData(SerializationInfo, StreamingContext)' security critical.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Luid" Kind="Struct" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Luid" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Luid' in type name 'Luid'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#NewLuid()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Luid" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="Luid.cs" Line="77">Correct the spelling of 'Luid' in member name 'Luid.NewLuid()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasAmbInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Amb" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Amb' in type name 'RasAmbInfo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasAutoDialAddress" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'AutoDial' in type name 'RasAutoDialAddress' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasAutoDialAddressCollection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'AutoDial' in type name 'RasAutoDialAddressCollection' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasAutoDialEntry" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'AutoDial' in type name 'RasAutoDialEntry' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasAutoDialManager" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'AutoDial' in type name 'RasAutoDialManager' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#IsAutoDialEnabled(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasAutoDialManager.cs" Line="220">The compound word 'AutoDial' in member name 'RasAutoDialManager.IsAutoDialEnabled(int)' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateAutoDialStatus(System.Int32,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="AutoDial" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasAutoDialManager.cs" Line="209">The compound word 'AutoDial' in member name 'RasAutoDialManager.UpdateAutoDialStatus(int, bool)' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasCcpInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ccp' in type name 'RasCcpInfo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasCompressionType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Mppc" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Mppc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Mppc' in member name 'RasCompressionType.Mppc' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Stac" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Stac" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Stac' in member name 'RasCompressionType.Stac' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasConnection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetSubEntryHandle(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasConnection.cs" Line="472">The compound word 'SubEntry' in member name 'RasConnection.GetSubEntryHandle(int)' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="subEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasConnection.cs" Line="472">In member 'RasConnection.GetSubEntryHandle(int)', the compound word 'subEntry' in parameter name 'subEntryId' exists as a discrete term. If your usage is intended to be single word, case it as 'subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasConnection.cs" Line="115">The compound word 'PhoneBook' in member name 'RasConnection.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntryId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasConnection.cs" Line="124">The compound word 'SubEntry' in member name 'RasConnection.SubEntryId' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasConnectionState" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AuthAck" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ack" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ack' in member name 'RasConnectionState.AuthAck' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthAck' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthCallback" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthCallback' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthChangePassword" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthChangePassword' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthLinkSpeed" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthLinkSpeed' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthNotify" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthNotify' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthProject" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthProject' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AuthRetry" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Auth' in member name 'RasConnectionState.AuthRetry' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InvokeEapUI" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Eap' in member name 'RasConnectionState.InvokeEapUI' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntryConnected" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'SubEntry' in member name 'RasConnectionState.SubEntryConnected' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntryDisconnected" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'SubEntry' in member name 'RasConnectionState.SubEntryDisconnected' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasDeviceType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Atm" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Atm" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Atm' in member name 'RasDeviceType.Atm' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Irda" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Irda" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Irda' in member name 'RasDeviceType.Irda' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PPPoE" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Po" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'Po' in member name 'RasDeviceType.PPPoE' by changing it to 'PO'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Sonet" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Sonet" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Sonet' in member name 'RasDeviceType.Sonet' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Vpn" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vpn' in member name 'RasDeviceType.Vpn' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasDialDialog" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialDialog.cs" Line="84">The compound word 'PhoneBook' in member name 'RasDialDialog.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntryId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialDialog.cs" Line="121">The compound word 'SubEntry' in member name 'RasDialDialog.SubEntryId' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasDialer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#eapDataAddress" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="UseSafeHandleToEncapsulateNativeResources" Category="Microsoft.Reliability" CheckId="CA2006" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="CriticalWarning">Review usage of 'RasDialer.eapDataAddress' (a 'IntPtr' instance) to determine whether it should be replaced with a SafeHandle or CriticalHandle.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EapOptions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialer.cs" Line="306">Correct the spelling of 'Eap' in member name 'RasDialer.EapOptions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialer.cs" Line="212">The compound word 'PhoneBook' in member name 'RasDialer.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SetEapUserData(System.Byte[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialer.cs" Line="443">Correct the spelling of 'Eap' in member name 'RasDialer.SetEapUserData(byte[])' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SkipPppAuthentication" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ppp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialer.cs" Line="382">Correct the spelling of 'Ppp' in member name 'RasDialer.SkipPppAuthentication' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntryId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialer.cs" Line="271">The compound word 'SubEntry' in member name 'RasDialer.SubEntryId' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasDialException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="SecurityRuleSetLevel2MethodsShouldNotBeProtectedWithLinkDemandsFxCopRule" Category="Microsoft.Security" CheckId="CA2135" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasDialException.cs" Line="106">'RasDialException.GetObjectData(SerializationInfo, StreamingContext)' is protected with a LinkDemand for 'SecurityPermissionAttribute'.  In the level 2 security rule set, it should be protected by being security critical instead.  Remove the LinkDemand and mark 'RasDialException.GetObjectData(SerializationInfo, StreamingContext)' security critical.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasEapOptions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Eap' in type name 'RasEapOptions'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasEapOptionsConverter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Eap' in type name 'RasEapOptionsConverter'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasEntry" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateDialUpEntry(System.String,System.String,DotRas.RasDevice)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="DialUp" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="770">The compound word 'DialUp' in member name 'RasEntry.CreateDialUpEntry(string, string, RasDevice)' exists as a discrete term. If your usage is intended to be single word, case it as 'Dialup' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateVpnEntry(System.String,System.String,DotRas.RasVpnStrategy,DotRas.RasDevice)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="821">Correct the spelling of 'Vpn' in member name 'RasEntry.CreateVpnEntry(string, string, RasVpnStrategy, RasDevice)' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CreateVpnEntry(System.String,System.String,DotRas.RasVpnStrategy,DotRas.RasDevice,System.Boolean)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="838">Correct the spelling of 'Vpn' in member name 'RasEntry.CreateVpnEntry(string, string, RasVpnStrategy, RasDevice, bool)' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CustomAuthKey" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="502">Correct the spelling of 'Auth' in member name 'RasEntry.CustomAuthKey' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Exists(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="phoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="741">In member 'RasEntry.Exists(string, string)', the compound word 'phoneBook' in parameter name 'phoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetCustomAuthData()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="1133">Correct the spelling of 'Auth' in member name 'RasEntry.GetCustomAuthData()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetEapUserData()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="1148">Correct the spelling of 'Eap' in member name 'RasEntry.GetEapUserData()' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv4InterfaceMetric" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="660">Correct the spelling of 'Pv' in member name 'RasEntry.IPv4InterfaceMetric' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6Address" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="691">Correct the spelling of 'Pv' in member name 'RasEntry.IPv6Address' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6DnsAddress" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="633">Correct the spelling of 'Pv' in member name 'RasEntry.IPv6DnsAddress' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6DnsAddressAlt" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="650">Correct the spelling of 'Pv' in member name 'RasEntry.IPv6DnsAddressAlt' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6InterfaceMetric" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="670">Correct the spelling of 'Pv' in member name 'RasEntry.IPv6InterfaceMetric' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6PrefixLength" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="701">Correct the spelling of 'Pv' in member name 'RasEntry.IPv6PrefixLength' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PrerequisitePhoneBook" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="575">The compound word 'PhoneBook' in member name 'RasEntry.PrerequisitePhoneBook' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SubEntries" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntries" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="409">The compound word 'SubEntries' in member name 'RasEntry.SubEntries' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentries' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateCustomAuthData(System.Byte[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Auth" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="1235">Correct the spelling of 'Auth' in member name 'RasEntry.UpdateCustomAuthData(byte[])' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateEapUserData(System.Byte[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="1252">Correct the spelling of 'Eap' in member name 'RasEntry.UpdateEapUserData(byte[])' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#VpnStrategy" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntry.cs" Line="529">Correct the spelling of 'Vpn' in member name 'RasEntry.VpnStrategy' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasEntryDialog" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryDialog.cs" Line="123">The compound word 'PhoneBook' in member name 'RasEntryDialog.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasEntryNameValidator" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AllowNonExistentPhoneBook" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="NonExistent" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryNameValidator.cs" Line="102">The compound word 'NonExistent' in member name 'RasEntryNameValidator.AllowNonExistentPhoneBook' exists as a discrete term. If your usage is intended to be single word, case it as 'Nonexistent' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryNameValidator.cs" Line="102">The compound word 'PhoneBook' in member name 'RasEntryNameValidator.AllowNonExistentPhoneBook' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryNameValidator.cs" Line="120">The compound word 'PhoneBook' in member name 'RasEntryNameValidator.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasEntryOptions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#DisableIkeNameEkuCheck" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eku" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="562">Correct the spelling of 'Eku' in member name 'RasEntryOptions.DisableIkeNameEkuCheck' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DisableLcpExtensions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="73">Correct the spelling of 'Lcp' in member name 'RasEntryOptions.DisableLcpExtensions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#DisableNbtOverIP" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Nbt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="436">Correct the spelling of 'Nbt' in member name 'RasEntryOptions.DisableNbtOverIP' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6RemoteDefaultGateway" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="526">Correct the spelling of 'Pv' in member name 'RasEntryOptions.IPv6RemoteDefaultGateway' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RequireEap" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="216">Correct the spelling of 'Eap' in member name 'RasEntryOptions.RequireEap' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RequireSpap" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Spap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasEntryOptions.cs" Line="234">Correct the spelling of 'Spap' in member name 'RasEntryOptions.RequireSpap' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasEntryType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Vpn" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vpn' in member name 'RasEntryType.Vpn' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="SecurityRuleSetLevel2MethodsShouldNotBeProtectedWithLinkDemandsFxCopRule" Category="Microsoft.Security" CheckId="CA2135" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+             <Issue Certainty="50" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasException.cs" Line="106">'RasException.GetObjectData(SerializationInfo, StreamingContext)' is protected with a LinkDemand for 'SecurityPermissionAttribute'.  In the level 2 security rule set, it should be protected by being security critical instead.  Remove the LinkDemand and mark 'RasException.GetObjectData(SerializationInfo, StreamingContext)' security critical.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasFramingProtocol" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Ppp" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ppp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ppp' in member name 'RasFramingProtocol.Ppp' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasIkeV2AuthenticationType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Eap" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Eap' in member name 'RasIkeV2AuthenticationType.Eap' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasIkeV2Info" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#EapTypeId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="184">Correct the spelling of 'Eap' in member name 'RasIkeV2Info.EapTypeId' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv4Address" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="120">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.IPv4Address' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv4NegotiationErrorCode" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="111">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.IPv4NegotiationErrorCode' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6Address" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="147">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.IPv6Address' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6NegotiationErrorCode" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="138">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.IPv6NegotiationErrorCode' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerIPv4Address" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="129">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.ServerIPv4Address' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerIPv4Addresses" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="211">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.ServerIPv4Addresses' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerIPv6Address" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="156">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.ServerIPv6Address' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerIPv6Addresses" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIkeV2Info.cs" Line="220">Correct the spelling of 'Pv' in member name 'RasIkeV2Info.ServerIPv6Addresses' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasIPv6Info" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Pv' in type name 'RasIPv6Info'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasIpxInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Ipx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ipx' in type name 'RasIpxInfo'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#IpxAddress" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ipx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasIpxInfo.cs" Line="86">Correct the spelling of 'Ipx' in member name 'RasIpxInfo.IpxAddress' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasLcpAuthenticationDataType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Lcp' in type name 'RasLcpAuthenticationDataType'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasLcpAuthenticationType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Lcp' in type name 'RasLcpAuthenticationType'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Eap" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Eap' in member name 'RasLcpAuthenticationType.Eap' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Spap" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Spap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Spap' in member name 'RasLcpAuthenticationType.Spap' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasLcpInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Lcp' in type name 'RasLcpInfo'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#EapTypeId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLcpInfo.cs" Line="136">Correct the spelling of 'Eap' in member name 'RasLcpInfo.EapTypeId' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerEapTypeId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLcpInfo.cs" Line="164">Correct the spelling of 'Eap' in member name 'RasLcpInfo.ServerEapTypeId' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasLcpOptions" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Lcp' in type name 'RasLcpOptions'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#Acfc" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Acfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLcpOptions.cs" Line="73">Correct the spelling of 'Acfc' in member name 'RasLcpOptions.Acfc' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Pfc" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pfc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLcpOptions.cs" Line="64">Correct the spelling of 'Pfc' in member name 'RasLcpOptions.Pfc' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Sshf" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Sshf" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLcpOptions.cs" Line="82">Correct the spelling of 'Sshf' in member name 'RasLcpOptions.Sshf' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasLinkStatistics" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CrcError" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasLinkStatistics.cs" Line="107">Correct the spelling of 'Crc' in member name 'RasLinkStatistics.CrcError' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasNbfInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Nbf" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Nbf' in type name 'RasNbfInfo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasNetworkProtocols" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#IPv6" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasNetworkProtocols.cs" Line="74">Correct the spelling of 'Pv' in member name 'RasNetworkProtocols.IPv6' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Ipx" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ipx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasNetworkProtocols.cs" Line="53">Correct the spelling of 'Ipx' in member name 'RasNetworkProtocols.Ipx' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasPhoneBook" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'PhoneBook' in type name 'RasPhoneBook' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#GetPhoneBookPath(DotRas.RasPhoneBookType)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPhoneBook.cs" Line="118">The compound word 'PhoneBook' in member name 'RasPhoneBook.GetPhoneBookPath(RasPhoneBookType)' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+            <Message Id="phoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberParameterShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPhoneBook.cs" Line="118">In member 'RasPhoneBook.GetPhoneBookPath(RasPhoneBookType)', the compound word 'phoneBook' in parameter name 'phoneBookType' exists as a discrete term. If your usage is intended to be single word, case it as 'phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasPhoneBookDialog" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'PhoneBook' in type name 'RasPhoneBookDialog' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#PhoneBookPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPhoneBookDialog.cs" Line="162">The compound word 'PhoneBook' in member name 'RasPhoneBookDialog.PhoneBookPath' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasPhoneBookDialogEventArgs" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'PhoneBook' in type name 'RasPhoneBookDialogEventArgs' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasPhoneBookType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="PhoneBook" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'PhoneBook' in type name 'RasPhoneBookType' exists as a discrete term. If your usage is intended to be single word, case it as 'Phonebook'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasPppInfo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Ppp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ppp' in type name 'RasPppInfo'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#CcpCompressionAlgorithm" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="291">Correct the spelling of 'Ccp' in member name 'RasPppInfo.CcpCompressionAlgorithm' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CcpOptions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="309">Correct the spelling of 'Ccp' in member name 'RasPppInfo.CcpOptions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EapTypeId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="255">Correct the spelling of 'Eap' in member name 'RasPppInfo.EapTypeId' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv4NegotiationErrorCode" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="129">Correct the spelling of 'Pv' in member name 'RasPppInfo.IPv4NegotiationErrorCode' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6NegotiationErrorCode" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="174">Correct the spelling of 'Pv' in member name 'RasPppInfo.IPv6NegotiationErrorCode' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LcpOptions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="273">Correct the spelling of 'Lcp' in member name 'RasPppInfo.LcpOptions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerCcpCompressionAlgorithm" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="300">Correct the spelling of 'Ccp' in member name 'RasPppInfo.ServerCcpCompressionAlgorithm' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerCcpOptions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="318">Correct the spelling of 'Ccp' in member name 'RasPppInfo.ServerCcpOptions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerEapTypeId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Eap" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="264">Correct the spelling of 'Eap' in member name 'RasPppInfo.ServerEapTypeId' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ServerLcpOptions" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="RasPppInfo.cs" Line="282">Correct the spelling of 'Lcp' in member name 'RasPppInfo.ServerLcpOptions' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasPreSharedKey" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Ddm" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ddm" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ddm' in member name 'RasPreSharedKey.Ddm' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasProjectionType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Amb" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Amb" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Amb' in member name 'RasProjectionType.Amb' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Ccp" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ccp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ccp' in member name 'RasProjectionType.Ccp' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IPv6" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Pv' in member name 'RasProjectionType.IPv6' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Ipx" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ipx" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ipx' in member name 'RasProjectionType.Ipx' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Lcp" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Lcp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Lcp' in member name 'RasProjectionType.Lcp' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Nbf" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Nbf" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Nbf' in member name 'RasProjectionType.Nbf' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Ppp" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Ppp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Ppp' in member name 'RasProjectionType.Ppp' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RasSubEntry" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="TypeShouldBeDiscreteTerm" Certainty="80" Level="Error">The compound word 'SubEntry' in type name 'RasSubEntry' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RasVpnStrategy" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message Id="Vpn" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+           <Issue Name="Type" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Vpn' in type name 'RasVpnStrategy'.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#L2tpFirst" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="tp" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'tp' in member name 'RasVpnStrategy.L2tpFirst' by changing it to 'TP'.</Issue>
+            </Message>
+            <Message Id="tp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'tp' in member name 'RasVpnStrategy.L2tpFirst' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#L2tpOnly" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="tp" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error">Correct the casing of 'tp' in member name 'RasVpnStrategy.L2tpOnly' by changing it to 'TP'.</Issue>
+            </Message>
+            <Message Id="tp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'tp' in member name 'RasVpnStrategy.L2tpOnly' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PptpFirst" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pptp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Pptp' in member name 'RasVpnStrategy.PptpFirst' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PptpOnly" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Pptp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Pptp' in member name 'RasVpnStrategy.PptpOnly' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SstpFirst" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Sstp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Sstp' in member name 'RasVpnStrategy.SstpFirst' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SstpOnly" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="Sstp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="75" Level="CriticalWarning">Correct the spelling of 'Sstp' in member name 'RasVpnStrategy.SstpOnly' or remove it entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="StateChangedEventArgs" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#SubEntryId" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="SubEntry" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeDiscreteTerm" Certainty="80" Level="Error" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas" File="StateChangedEventArgs.cs" Line="66">The compound word 'SubEntry' in member name 'StateChangedEventArgs.SubEntryId' exists as a discrete term. If your usage is intended to be single word, case it as 'Subentry' or strip the first token entirely if it represents any sort of Hungarian notation.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="DotRas.Internal">
+       <Types>
+        <Type Name="IPAddressConverter" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="C:\Source\BVITS\VpnIcon\Third Party\DotRas\Internal" File="IPAddressConverter.cs" Line="101">'value', a parameter, is cast to type 'string' multiple times in method 'IPAddressConverter.ConvertFrom(ITypeDescriptorContext, CultureInfo, object)'. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant castclass instruction.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+     <Resources>
+      <Resource Name="DotRas.Properties.Resources.resources">
+       <Messages>
+        <Message Id="AutoDial" TypeName="ResourceStringCompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1701" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+         <Issue Name="StringResourceShouldBeDiscreteTerm" Certainty="80" Level="Error">In resource 'DotRas.Properties.Resources.resx', referenced by name 'RADMDisableConnectionQueryDesc', the compound word 'AutoDial' in string value 'Indicates whether AutoDial displays a dialog box to query the user before creating a connection.' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+         <Issue Name="StringResourceShouldBeDiscreteTerm" Certainty="80" Level="Error">In resource 'DotRas.Properties.Resources.resx', referenced by name 'RADMFailedConnectionTimeoutDesc', the compound word 'AutoDial' in string value 'The length of time (in seconds) between AutoDial connection attempts.' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+         <Issue Name="StringResourceShouldBeDiscreteTerm" Certainty="80" Level="Error">In resource 'DotRas.Properties.Resources.resx', referenced by name 'RADMLogOnSessionDisableDesc', the compound word 'AutoDial' in string value 'Indicates whether the system disables all AutoDial connections for the current session.' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+         <Issue Name="StringResourceShouldBeDiscreteTerm" Certainty="80" Level="Error">In resource 'DotRas.Properties.Resources.resx', referenced by name 'RADMSavedAddressesLimitDesc', the compound word 'AutoDial' in string value 'The maximum number of addresses that AutoDial stores in the registry.' exists as a discrete term. If your usage is intended to be single word, case it as 'Autodial'.</Issue>
+        </Message>
+        <Message Id="Logon" TypeName="ResourceStringCompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1701" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+         <Issue Name="StringResourceShouldBeCompoundWord" Certainty="80" Level="Error">In resource 'DotRas.Properties.Resources.resx', referenced by name 'REAPOLogOnDesc' the discrete term 'Logon' in string value 'Indicates whether the user data is obtained from WinLogon.' should be expressed as a compound word. If 'Logon' refers to an API identifier, case it as 'LogOn', otherwise split it into two words separated by a space.</Issue>
+        </Message>
+        <Message Id="Ev" TypeName="ResourceStringsShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1703" Status="Active" Created="2021-06-15 00:15:00Z" FixCategory="NonBreaking">
+         <Issue Name="StringResource" Certainty="50" Level="CriticalWarning">In resource 'DotRas.Properties.Resources.resx', referenced by name 'Exception_InvalidIkeV2Handle', correct the spelling of 'Ev' in string value 'The connection must be a valid IKEv2 connection.'.</Issue>
+        </Message>
+       </Messages>
+      </Resource>
+     </Resources>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+   <Name>Compound words should be cased correctly</Name>
+   <Description>Avoid creating compound words from terms which exist in the dictionary as discrete terms. Do not create a compound word such as 'StopWatch' or 'PopUp'. These terms are recognized in the dictionary and should be cased as 'Stopwatch' and 'Popup'.</Description>
+   <Resolution Name="MemberParameterShouldBeDiscreteTerm">In member {0}, the compound word '{1}' in parameter name {2} exists as a discrete term. If your usage is intended to be single word, case it as '{3}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="MemberShouldBeDiscreteTerm">The compound word '{0}' in member name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}' or strip the first token entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="TypeShouldBeDiscreteTerm">The compound word '{0}' in type name {1} exists as a discrete term. If your usage is intended to be single word, case it as '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264474.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="80">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
+   <Name>Do not cast unnecessarily</Name>
+   <Description>Avoid duplicate casts where possible, since there is a cost associated with them.</Description>
+   <Resolution Name="Parameter">{0}, a parameter, is cast to type {1} multiple times in method {2}. Cache the result of the 'as' operator or direct cast in order to eliminate the redundant {3} instruction.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182271.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Identifiers should be cased correctly</Name>
+   <Description>Type, namespace, and member identifiers are Pascal-cased. Parameter identifiers are camel-cased. Two letter acronyms within these identifiers should be upper-cased, for example, use System.IO instead of System.Io. Acronyms of three or more letters should be Pascal-cased, for example, use System.Xml instead of System.XML. The pascal-casing convention capitalizes the first letter of each word, as in BackColor. The camel-casing convention formats the first letter of the first word in lowercase and capitalizes the first letter of all subsequent words, as in backgroundColor. Although it may be common practice for some two letter acronyms to not be fully capitalized, violations of this rule should not be excluded for this reason. For example, 'DbConnection', is common but incorrect; use DBConnection. A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</Description>
+   <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182240.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+   <Name>Identifiers should be spelled correctly</Name>
+   <Description>The individual words that make up an identifier should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+   <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264492.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="namingrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="ResourceStringCompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1701">
+   <Name>Resource string compound words should be cased correctly</Name>
+   <Description>Avoid creating compound words from terms which exist in the dictionary as discrete terms. Do not create a compound word such as 'StopWatch' or 'PopUp'. These terms are recognized in the dictionary and should be cased as 'Stopwatch' and 'Popup'.</Description>
+   <Resolution Name="StringResourceShouldBeCompoundWord">In resource {0}, referenced by name '{1}' the discrete term '{2}' in string value '{3}' should be expressed as a compound word. If '{2}' refers to an API identifier, case it as '{4}', otherwise split it into two words separated by a space.</Resolution>
+   <Resolution Name="StringResourceShouldBeDiscreteTerm">In resource {0}, referenced by name '{1}', the compound word '{2}' in string value '{3}' exists as a discrete term. If your usage is intended to be single word, case it as '{4}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264481.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="80">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="ResourceStringsShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1703">
+   <Name>Resource strings should be spelled correctly</Name>
+   <Description>The individual words that make up a resource string should not be abbreviated and should be spelled correctly. If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</Description>
+   <Resolution Name="StringResource">In resource {0}, referenced by name '{1}', correct the spelling of '{2}' in string value '{3}'.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264483.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">CriticalWarning</MessageLevel>
+   <File Name="namingrules.dll" Version="16.0.0.0" />
+  </Rule>
+  <Rule TypeName="SecurityRuleSetLevel2MethodsShouldNotBeProtectedWithLinkDemandsFxCopRule" Category="Microsoft.Security" CheckId="CA2135">
+   <Name>Level 2 assemblies should not contain LinkDemands</Name>
+   <Description>LinkDemands are deprecated in the level 2 security rule set.  Instead of using LinkDemands to enforce JIT time security, SecurityCritical methods, types, and fields should be used instead.</Description>
+   <Resolution Name="Default">{0} is protected with a LinkDemand for {1}.  In the level 2 security rule set, it should be protected by being security critical instead.  Remove the LinkDemand and mark {0} security critical.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/dd997569(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="50">CriticalWarning</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="UseSafeHandleToEncapsulateNativeResources" Category="Microsoft.Reliability" CheckId="CA2006">
+   <Name>Use SafeHandle to encapsulate native resources</Name>
+   <Description>Use of IntPtr in managed code may indicate a potential security and reliability problem. All uses of IntPtr must be reviewed to determine whether use of a SafeHandle (or similar technology) is required in its place. Problems will occur if the IntPtr represents some native resource (memory, file handle, socket etc.) that managed code is considered to own. I.e. managed code is expected to in some way release the resource and failure to do so would cause resource leakage. In such scenarios security or reliability problems will also exist if multithreaded access is allowed to the IntPtr and a means of releasing the resource represented by the IntPtr. These problems involve recycling of the IntPtr value on resource release while simultaneous use of the resource is being made on another thread, leading to race conditions where one thread can read or write data associated with the wrong resource. For example, if your type stores an OS handle as an IntPtr and allows users to call both Close and any other method using that handle simultaneously (without some kind of synchronization), your code has a handle recycling problem, which causes data corruption and often a security vulnerability. SafeHandle (and its sibling class CriticalHandle) provide a mechanism for encapsulating a native handle to a resource so that such threading problems can be avoided (along with other issues such as the need to carefully control the lifetime of managed objects that contain a copy of the native handle over calls to native methods; ie, you can often remove calls to GC.KeepAlive). There are performance overheads implicit in using SafeHandle (and, to a lesser degree, CriticalHandle) which can often be mitigated through careful design.</Description>
+   <Resolution Name="Default">Review usage of {0} (a {1} instance) to determine whether it should be replaced with a SafeHandle or CriticalHandle.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182294.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="reliabilityrules.dll" Version="16.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
